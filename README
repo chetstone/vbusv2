@@ -1,6 +1,14 @@
 A set of useful additions for the DL2: A dynamic DNS client, and
 a utility to read and write values to VBUS (protocol V2) devices.
 
+The vbusv2 script can be run on any machine that has a Ruby interpreter.
+It can communicate with your vbus via the DL2 by running the script with the
+--hostname='dl2_ip' option.
+(It should also work with the VBus/LAN although I have not tested it.)
+
+The directions below assume you are going to install and run the scripts
+on the DL2 itself.
+
 First, ask RESOL for a development key for your DL2. Once you have
 installed the key, you will be able to log into the dl2 with ssh. 
 
