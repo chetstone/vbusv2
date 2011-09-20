@@ -1,6 +1,5 @@
 #!/bin/sh
 find nand \( -name '*~' -or -name '\#*' \) -delete
-rm -f nand/custom/data/* nand/custom/log/* nand/custom/conf/config.yml
 # do the copy
 scp -pr ./nand dl2:/mnt
 # run the post script

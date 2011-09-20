@@ -13,7 +13,7 @@ options = {:hostname=> ENV['HOME'] == '/root' ? 'localhost' :
   '192.168.1.100', :port=>'7053', :monitor=>false,
   :debug=>false, :verbose=>false, :dest=>0x4221}
 
-puts options[:hostname]
+#puts options[:hostname]
 class Symbol
   include Comparable
 
