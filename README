@@ -1,0 +1,61 @@
+A set of useful additions for the DL2: A dynamic DNS client, and
+a utility to read and write values to VBUS (protocol V2) devices.
+
+First, ask RESOL for a development key for your DL2. Once you have
+installed the key, you will be able to log into the dl2 with ssh. 
+
+Put an entry like this in your .ssh/config on your development host:
+
+Host dl2
+Hostname example.no-ip.org
+user root
+
+Then edit config.example and save it as config
+
+Then you can invoke the upall script in this directory to copy the
+files from this directory to the appropriate places on the dl2. You
+will have to type your dl2 root password twice. Note that the standard
+filesystem in the dl2 is volatile, so in order for the added files to
+survive a reboot, they must be placed in nonvolatile storage, i.e.,
+/mnt/nand. On reboot, init invokes dl2postinit.sh which copies the
+files to their appropriate places and initializes crontab with the 
+entries in root/cronspecs.
+
+vbusv2.rb is a script for monitoring VBUS V2 protocol packets and
+getting and setting parameter values of vbus controllers. A few
+mnemonic symbols are defined for the BSplus controller, otherwise you
+can just supply the hexadecimal index for the parameter you're
+interested in. Execute vbusv2.rb --help for more information. If your
+controller is not a BS plus you'll need to use the --destination
+option to provide the target id for your controller.
+
+By default the vbus script runs on the DL2, where it can be invoked by 
+cron to reset controller parameters at different times of the day. It can
+also be run on another machine using the --hostname='dl2_ip' option.
+
+Example use:
+
+./vbusv2.rb -m        
+   # continuously monitors V2 traffic on the vbus.
+   # Use this while running RSC to see what it does.
+./vbusv2.rb SMX
+   # reads the value of SMX from the controller and prints it out
+./vbusv2.rb SMX 1800
+   # sets the SMX paramater of the controller to 1800. Note that
+   # the script does not do scaling of the values. You have to enter
+   # the values in the native machine format. Here, the parameter is
+   # is in tenths of a degree, so setting it to 1800 sets it to 180 degrees.
+   
+
+FILES:
+.gitignore
+License.txt
+README
+upall
+nand/dl2/sbin/dl2postinit.sh
+nand/root/config.example
+nand/root/cronspecs
+nand/root/no-ip.sh
+nand/root/vbusutil.rb
+nand/root/vbusv2.rb
+

@@ -1,0 +1,3 @@
+5,25,45 * * * * /root/no-ip.sh
+19 16 * * * /mnt/nand/custom/scripts/vbusv2.rb AHO 1410 AHF 1360  >> /root/vbus.log 2>&1
+22 16 * * * /mnt/nand/custom/scripts/vbusv2.rb AHO 1390 AHV 1340 >> /root/vbus.log 2>&1

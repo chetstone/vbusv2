@@ -1,0 +1,10 @@
+# Edit this file to insert appropriate values and save as "config"
+#
+# for no-ip.sh
+# username, password and dynamic hostname for no-ip.com account
+user="my no-ip username"
+pass="no-ippw"
+host="example.no-ip.org"
+
+
+
